@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="PT. SUCOFINDO UP Sungai Putting">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#0134d4">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta property="og:url" content="https://kas.upsungaiputting.com" />
+    <meta property="og:type" content="Pencatatan Kas Sucofindo UP Sungai Putting" />
+    <title>SCI SEI PUTTING</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" href="{{asset('img/core-img/favicon.ico')}}">
+    <link rel="apple-touch-icon" href="{{asset('img/icons/icon-96x96.png')}}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{asset('img/icons/icon-152x152.png')}}">
+    <link rel="apple-touch-icon" sizes="167x167" href="{{asset('img/icons/icon-167x167.png')}}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{asset('img/icons/icon-180x180.png')}}">
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/bootstrap-icons.css')}}">
+    <link rel="stylesheet" href="{{asset('css/tiny-slider.css')}}">
+    <link rel="stylesheet" href="{{asset('css/baguetteBox.min.css')}}">
+    <!-- <link rel="stylesheet" href="{{asset('css/rangeslider.css')}}"> -->
+    <link rel="stylesheet" href="{{asset('css/vanilla-dataTables.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/apexcharts.css')}}">
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="{{asset('style.css')}}">
+    <!-- Web App Manifest -->
+    <!-- <link rel="manifest" href="manifest.json"> -->
+    <livewire:styles/>
+    <livewire:scripts/>
+  </head>
+  <body>
+    <!-- Preloader -->
+    <!-- <div id="preloader">
+      <div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
+    </div> -->
+    <!-- Internet Connection Status -->
+    <!-- # This code for showing internet connection status -->
+    <div class="internet-connection-status" id="internetStatus"></div>
+    <!-- Header Area -->
+    @include('partials.header')
+    <!-- # Sidenav Left -->
+    <!-- Offcanvas -->
+    @include('partials.sidebar')
+    
+    @yield('content')
+    <!-- Footer Nav -->
+    <div class="footer-nav-area" id="footerNav">
+      <div class="container px-0">
+        @include('partials.nav-footer')
+      </div>
+    </div>
+    <!-- All JavaScript Files -->
+    <script src="{{mix('js/app.js')}}" data-turbolinks-eval="false" data-turbolinks-suppress-warning></script>
+    <script src="{{asset('js/bootstrap.bundle.min.js')}}" data-turbolinks-eval="false" data-turbolinks-suppress-warning></script>
+    <script src="{{asset('js/slideToggle.min.js')}}"></script>
+    <script src="{{asset('js/internet-status.js')}}"></script>
+    <script src="{{asset('js/tiny-slider.js')}}"></script>
+    <script src="{{asset('js/baguetteBox.min.js')}}"></script>
+    <!-- <script src="{{asset('js/countdown.js')}}"></script> -->
+    <!-- <script src="{{asset('js/rangeslider.min.js')}}"></script> -->
+    <script src="{{asset('js/vanilla-dataTables.min.js')}}"></script>
+    <script src="{{asset('js/index.js')}}"></script>
+    <script src="{{asset('js/magic-grid.min.js')}}"></script>
+    <script src="{{asset('js/dark-rtl.js')}}"></script>
+    <script src="{{asset('js/active.js')}}"></script>
+    <!-- PWA -->
+    <!-- <script src="{{asset('js/pwa.js')}}"></script> -->
+  </body>
+</html>
