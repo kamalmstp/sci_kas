@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="{{asset('css/tiny-slider.css')}}">
     <link rel="stylesheet" href="{{asset('css/baguetteBox.min.css')}}">
     <!-- <link rel="stylesheet" href="{{asset('css/rangeslider.css')}}"> -->
-    <link rel="stylesheet" href="{{asset('css/vanilla-dataTables.min.css')}}" data-turbolinks-track="true" data-turbolinks-eval="false" data-turbolinks-suppress-warning>
+    <link rel="stylesheet" href="{{asset('css/vanilla-dataTables.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/apexcharts.css')}}">
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="{{asset('style.css')}}" data-turbolinks-track="true" data-turbolinks-eval="false" data-turbolinks-suppress-warning>
@@ -45,16 +45,30 @@
     <!-- # This code for showing internet connection status -->
     <div class="internet-connection-status" id="internetStatus"></div>
     <!-- Header Area -->
-    @include('partials.header')
-    <!-- # Sidenav Left -->
-    <!-- Offcanvas -->
-    @include('partials.sidebar')
+    @include('partials.header_simple')
     
     @yield('content')
     <!-- Footer Nav -->
     <div class="footer-nav-area" id="footerNav">
       <div class="container px-0">
         @include('partials.nav-footer')
+      </div>
+    </div>
+
+    <div class="card setting-popup-card shadow-lg" id="settingCard">
+      <div class="card-body">
+        <div class="container">
+          <div class="setting-heading d-flex align-items-center justify-content-between mb-3">
+            <p class="mb-0">Settings</p>
+            <div class="btn-close" id="settingCardClose"></div>
+          </div>
+          <div class="single-setting-panel">
+            <div class="form-check form-switch mb-2">
+              <input class="form-check-input" type="checkbox" id="darkSwitch">
+              <label class="form-check-label" for="darkSwitch">Dark mode</label>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- All JavaScript Files -->
@@ -66,48 +80,13 @@
     <script src="{{asset('js/baguetteBox.min.js')}}"></script>
     <!-- <script src="{{asset('js/countdown.js')}}"></script> -->
     <!-- <script src="{{asset('js/rangeslider.min.js')}}"></script> -->
-    <script src="{{asset('js/vanilla-dataTables.min.js')}}" data-turbolinks-track="true" data-turbolinks-eval="false" data-turbolinks-suppress-warning></script>
+    <script src="{{asset('js/vanilla-dataTables.min.js')}}"></script>
     <script src="{{asset('js/index.js')}}"></script>
     <script src="{{asset('js/magic-grid.min.js')}}"></script>
     <script src="{{asset('js/dark-rtl.js')}}"></script>
     <script src="{{asset('js/active.js')}}" data-turbolinks-track="true" data-turbolinks-eval="false" data-turbolinks-suppress-warning></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- PWA -->
     <!-- <script src="{{asset('js/pwa.js')}}"></script> -->
-
-    @if (session()->has('message'))
-    <script>
-      Swal.fire({
-          title: 'Success',
-          text: '{{ session("message") }}',
-          icon: 'success',
-        })
-    </script>
-    @endif
-    <script>
-      window.addEventListener('show-delete-confirmation', event => {
-        Swal.fire({
-          title: 'Are you sure?',
-          text: "You won't be able to revert this!",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            window.livewire.emit('deleteConfirmed');
-          }
-        })
-      });
-
-      window.addEventListener('successDeleted', event => {
-        Swal.fire(
-          'Deleted!',
-          'Data has been deleted',
-          'success'
-        )
-      });
-    </script>
+    
   </body>
 </html>

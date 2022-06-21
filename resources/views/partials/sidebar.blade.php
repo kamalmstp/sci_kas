@@ -10,12 +10,12 @@
         </div>
         </div>
         <ul class="sidenav-nav ps-0">
-        <li><a href="/"><i class="bi bi-house-door"></i>Home</a></li>
-        <li><a href="#"><i class="bi bi-cash"></i>Kas Masuk</a></li>
-        <li><a href="#"><i class="bi bi-cash-stack"></i>Kas Keluar</a></li>
-        <li><a href="#"><i class="bi bi-receipt-cutoff"></i>Nota</a></li>
-        <li><a href="{{url('/category')}}"><i class="bi bi-upc"></i>Kode</a></li>
-        <li><a href="#"><i class="bi bi-gear"></i>Settings</a></li>
+        <li><a href="/" data-turbolinks="true"><i class="bi bi-house-door"></i>Home</a></li>
+        <li><a href="{{route('admin.kas.index')}}"><i class="bi bi-cash"></i>Kas Masuk</a></li>
+        <li><a href="{{route('admin.kaskeluar.index')}}"><i class="bi bi-cash-stack"></i>Kas Keluar</a></li>
+        <li><a href="{{route('admin.nota.index')}}"><i class="bi bi-receipt-cutoff"></i>Nota</a></li>
+        <li><a href="{{route('admin.cat.index')}}" data-turbolinks="true"><i class="bi bi-upc"></i>Kode</a></li>
+        <li><a href="{{route('admin.setting.index')}}"><i class="bi bi-gear"></i>Settings</a></li>
         <li>
             <div class="night-mode-nav"><i class="bi bi-moon"></i>Night Mode
             <div class="form-check form-switch">

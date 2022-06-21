@@ -26,10 +26,8 @@
                             <div class="accordion-body">
                             <p class="mb-0">{{$row->keterangan}}</p>
                                 <div class="row">
-                                    <!-- <div class="text-end"> -->
                                     <a class="btn m-1 btn-sm btn-circle btn-creative btn-warning" href="{{route('admin.cat.edit', $row->id)}}" data-bs-placement="left"><i class="bi bi-pencil-fill"></i></a>
                                     <button wire:click="destroy({{$row->id}})" class="btn m-1 btn-sm btn-circle btn-creative btn-danger" data-bs-placement="left"><i class="bi bi-trash-fill"></i></button>
-                                    <!-- </div> -->
                                 </div>
                             </div>
                         </div>

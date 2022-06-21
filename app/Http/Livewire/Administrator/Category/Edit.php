@@ -41,6 +41,8 @@ class Edit extends Component
             }
         }
 
+        session()->flash('message', 'Data Berhasil Disimpan.');
+
         return redirect()->route('admin.cat.index');
     }
 

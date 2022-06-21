@@ -22,6 +22,8 @@ class Create extends Component
             'keterangan' => $this->keterangan
         ]);
 
+        session()->flash('message', 'Data Berhasil Disimpan.');
+
         return redirect()->route('admin.cat.index');
     }
     public function render()
