@@ -45,34 +45,9 @@
     <!-- Internet Connection Status -->
     <!-- # This code for showing internet connection status -->
     <div class="internet-connection-status" id="internetStatus"></div>
-    <!-- Header Area -->
-    @include('partials.header_simple')
-    
-    @yield('content')
-    <!-- Footer Nav -->
-    <div class="footer-nav-area" id="footerNav">
-      <div class="container px-0">
-        @include('partials.nav-footer')
-      </div>
-    </div>
 
-    <div class="card setting-popup-card shadow-lg" id="settingCard">
-      <div class="card-body">
-        <div class="container">
-          <div class="setting-heading d-flex align-items-center justify-content-between mb-3">
-            <p class="mb-0">Settings</p>
-            <div class="btn-close" id="settingCardClose"></div>
-          </div>
-          <div class="single-setting-panel">
-            <div class="form-check form-switch mb-2">
-              <input class="form-check-input" type="checkbox" id="darkSwitch">
-              <label class="form-check-label" for="darkSwitch">Dark mode</label>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- All JavaScript Files -->
+    @yield('content')
+    
     <script src="{{mix('js/app.js')}}" data-turbolinks-eval="false" data-turbolinks-suppress-warning></script>
     <script src="{{asset('js/bootstrap.bundle.min.js')}}" data-turbolinks-eval="false" data-turbolinks-suppress-warning></script>
     <script src="{{asset('js/slideToggle.min.js')}}"></script>

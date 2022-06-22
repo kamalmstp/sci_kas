@@ -11,13 +11,14 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    const ADMIN = 'ADMIN', DRIVER = 'DRIVER';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'username', 'email', 'password', 'is_admin', 'level'
     ];
 
     /**

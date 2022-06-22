@@ -2,6 +2,7 @@
 <html lang="en" data-theme="light">
   <head>
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Budget Control - PT. Sucofindo UP Sungai Putting">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -71,7 +72,7 @@
     <script src="{{asset('js/magic-grid.min.js')}}"></script>
     <script src="{{asset('js/dark-rtl.js')}}"></script>
     <script src="{{asset('js/active.js')}}" data-turbolinks-track="true" data-turbolinks-eval="false" data-turbolinks-suppress-warning></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11" data-turbolinks-track="true" data-turbolinks-eval="false" data-turbolinks-suppress-warning></script>
     <!-- PWA -->
     <script src="{{ asset('sw.js') }}"></script>
     <script>
@@ -115,6 +116,42 @@
           'success'
         )
       });
+
+      var confirmLogout = () => {
+          Swal.fire({
+              title: 'Konfirmasi',
+              text: 'Apakah Anda yakin akan keluar?',
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#dc3544',
+              confirmButtonText: 'Ya, Keluar.',
+              //cancelButtonColor: '',
+              cancelButtonText: 'Batalkan',
+          }).then((value) => {
+              if (value.isConfirmed) {
+                  var body = document.querySelector("body");
+                  var actionURL = `/logout`;
+
+                  //Form logout
+                  var form = document.createElement("form");
+                  form.setAttribute("method", "POST");
+                  form.setAttribute("action", actionURL);
+
+                  var inputMethod = document.createElement("input");
+                  var token = document.querySelector("meta[name=csrf-token]").getAttribute('content');
+                  inputMethod.setAttribute("type", "hidden");
+                  inputMethod.setAttribute("name", "_token");
+                  inputMethod.setAttribute("value", token);
+
+                  form.appendChild(inputMethod);
+
+                  form.setAttribute('action', actionURL);
+
+                  body.appendChild(form);
+                  form.submit();
+              }
+          });
+      }
     </script>
   </body>
 </html>
