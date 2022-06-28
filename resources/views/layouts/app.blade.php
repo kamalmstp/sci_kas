@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="{{asset('style.css')}}" data-turbolinks-track="true" data-turbolinks-eval="false" data-turbolinks-suppress-warning>
     <!-- Web App Manifest -->
     <link rel="manifest" href="{{asset('manifest.json')}}">
+    <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
     <livewire:styles/>
     <livewire:scripts/>
   </head>

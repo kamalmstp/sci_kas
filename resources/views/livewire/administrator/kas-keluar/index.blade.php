@@ -41,15 +41,12 @@
     <div class="container">
         @foreach($kas_keluar as $row)
             <a class="affan-element-item" href="{{route('admin.kaskeluar.show', $row->id)}}">
-                <div class="position-relative d-flex align-items-center justify-content-between">
-                    <div class="back-button">
-                        <h6 class="mb-1">{{date('d-m-Y', strtotime($row->tanggal))}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h6>
-                    </div>
-                    <div class="setting-wrappe">
-                        <h6 class="mt-0 mb-1">&nbsp;&nbsp;@currency($row->nominal)</h6>
-                    </div>
-                </div>
+                {{date('d M Y', strtotime($row->tanggal))}}
+                <i class="bi bi-chevron-right"></i><h6 class="mt-0 mb-1">&nbsp;&nbsp;@currency($row->nominal)</h6>
             </a>
+            <!-- <a class="btn m-1 btn-danger" href="javascript:void(0)" wire:click.prevent='deleteConfirmation({{$row->id}})'>
+                <i class="bi bi-trash-fill"></i>
+            </a> -->
         @endforeach
     </div>
 </div>
