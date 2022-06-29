@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="{{asset('style.css')}}" data-turbolinks-track="true" data-turbolinks-eval="false" data-turbolinks-suppress-warning>
     <!-- Web App Manifest -->
     <link rel="manifest" href="{{asset('manifest.json')}}">
+    <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
     <livewire:styles/>
     <livewire:scripts/>
   </head>
@@ -86,6 +87,7 @@
     <script src="{{asset('js/magic-grid.min.js')}}"></script>
     <script src="{{asset('js/dark-rtl.js')}}"></script>
     <script src="{{asset('js/active.js')}}" data-turbolinks-track="true" data-turbolinks-eval="false" data-turbolinks-suppress-warning></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11" data-turbolinks-track="true" data-turbolinks-eval="false" data-turbolinks-suppress-warning></script>
     <!-- PWA -->
     <script src="{{ asset('sw.js') }}"></script>
     <script>
@@ -94,6 +96,41 @@
                 console.log("Service worker has been registered for scope: " + reg.scope);
             });
         }
+    </script>
+
+    @if (session()->has('message'))
+    <script>
+      Swal.fire({
+          title: 'Success',
+          text: '{{ session("message") }}',
+          icon: 'success',
+        })
+    </script>
+    @endif
+    <script>
+      window.addEventListener('show-delete-confirmation', event => {
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.livewire.emit('deleteConfirmed');
+          }
+        })
+      });
+
+      window.addEventListener('successDeleted', event => {
+        Swal.fire(
+          'Deleted!',
+          'Data has been deleted',
+          'success'
+        )
+      });
     </script>
     
   </body>

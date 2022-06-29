@@ -21,6 +21,10 @@ Route::get('/blank', function () {
     return view('blank');
 });
 
+Route::get('/foo', function () {
+    Artisan::call('storage:link');
+});
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
     Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -38,6 +42,10 @@ Route::middleware(['auth'])->group(function () {
             Route::livewire('/kas/create', 'administrator.kas.create')->layout('layouts.simple')->name('kas.create');
             Route::livewire('/kas/edit/{id}', 'administrator.kas.edit')->layout('layouts.simple')->name('kas.edit');
 
+            Route::livewire('/sarana', 'administrator.sarana.index')->name('sarana.index');
+            Route::livewire('/sarana/create', 'administrator.sarana.create')->layout('layouts.simple')->name('sarana.create');
+            Route::livewire('/sarana/edit/{id}', 'administrator.sarana.edit')->layout('layouts.simple')->name('sarana.edit');
+
             Route::livewire('/kaskeluar', 'administrator.kaskeluar.index')->name('kaskeluar.index');
             Route::livewire('/kaskeluar/create', 'administrator.kaskeluar.create')->layout('layouts.simple')->name('kaskeluar.create');
             Route::livewire('/kaskeluar/edit/{id}', 'administrator.kaskeluar.edit')->layout('layouts.simple')->name('kaskeluar.edit');
@@ -52,6 +60,10 @@ Route::middleware(['auth'])->group(function () {
         ->name('driver.')
         ->group(function (){
             Route::get('/', [HomeController::class, 'index'])->name('index');
+            Route::livewire('/bbm', 'driver.bbm.index')->name('bbm.index');
+            Route::livewire('/bbm/create', 'driver.bbm.create')->layout('layouts.simple')->name('bbm.create');
+            Route::livewire('/bbm/edit/{id}', 'driver.bbm.edit')->layout('layouts.simple')->name('bbm.edit');
+            Route::livewire('/bbm/show/{id}', 'driver.bbm.show')->layout('layouts.simple')->name('bbm.show');
     });
 });
 

@@ -12,13 +12,12 @@
         <ul class="sidenav-nav ps-0">
             <li><a href="/" data-turbolinks="true"><i class="bi bi-house-door"></i>Home</a></li>
         @if(auth()->user()->level === App\Models\User::ADMIN)
-            <li><a href="{{route('admin.kas.index')}}"><i class="bi bi-cash"></i>Kas Masuk</a></li>
-            <li><a href="{{route('admin.kaskeluar.index')}}"><i class="bi bi-cash-stack"></i>Kas Keluar</a></li>
-            <li><a href="{{route('admin.nota.index')}}"><i class="bi bi-receipt-cutoff"></i>Nota</a></li>
+            <!-- <li><a href="{{route('admin.nota.index')}}"><i class="bi bi-receipt-cutoff"></i>Nota</a></li> -->
             <li><a href="{{route('admin.cat.index')}}" data-turbolinks="true"><i class="bi bi-upc"></i>Kode</a></li>
+            <li><a href="{{route('admin.sarana.index')}}"><i class="bi bi-truck"></i>Sarana</a></li>
             <li><a href="{{route('admin.setting.index')}}"><i class="bi bi-gear"></i>Settings</a></li>
         @elseif(auth()->user()->level === App\Models\User::DRIVER)
-            <li><a href="#"><i class="bi bi-receipt-cutoff"></i>Nota</a></li>
+            <li><a href="{{route('driver.bbm.index')}}"><i class="bi bi-speedometer"></i>Nota BBM</a></li>
         @endif
         <li>
             <div class="night-mode-nav"><i class="bi bi-moon"></i>Night Mode
