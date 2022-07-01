@@ -7,7 +7,7 @@
     </div>
     <div class="container">
         @foreach($nota as $row)
-        <div class="card timeline-card">
+        <div class="card timeline-card bg-secondary">
           <div class="card-body">
             <div class="d-flex justify-content-between">
               <div class="timeline-text mb-2">
@@ -16,6 +16,7 @@
               </div>
               <div class="timeline-icon mb-2">
                 <div class="row">
+                    <button wire:click.prevent="forward({{ $row->id }})" class="btn m-1 btn-sm btn-circle btn-creative btn-warning" data-bs-placement="left"><i class="bi bi-save2-fill"></i></button>
                     <a class="btn m-1 btn-sm btn-circle btn-creative btn-success" href="{{route('admin.nota.show', $row->id)}}" data-bs-placement="left"><i class="bi bi-eye"></i></a>
                     <a href="javascript:void(0)" wire:click.prevent='deleteConfirmation({{$row->id}})' class="btn m-1 btn-sm btn-circle btn-creative btn-danger" data-bs-placement="left"><i class="bi bi-trash-fill"></i></a>
                 </div>

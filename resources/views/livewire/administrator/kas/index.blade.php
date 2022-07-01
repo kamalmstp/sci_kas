@@ -17,6 +17,11 @@
             <div class="d-flex justify-content-between">
               <div class="timeline-text mb-2"><span class="badge mb-2 rounded-pill">{{$row->no_umk}}</span>
                 <h6>@currency($row->nominal)</h6>
+                <div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input form-check-success"wire:model.lazy="status" type="checkbox" role="switch" @if($row->status) checked @endif>
+                </div>
+                </div>
               </div>
               <div class="timeline-icon mb-2">
                 <div class="row">

@@ -24,6 +24,16 @@ class Index extends Component
         $this->dispatchBrowserEvent('successDeleted');
     }
 
+    public function forward($id)
+    {
+        $nota = Nota::join('m_bbm', 'nota_bbm.id_bbm', '=', 'm_bbm.id')->
+                join('sarana', 'nota_bbm.id_sarana', '=', 'sarana.id')->
+                where('nota_bbm.id', $id)->select('m_bbm.nama', 'm_bbm.harga', 'sarana.nama as sarana', 'sarana.no_plat', 'nota_bbm.*')->first();
+        $liter = ($nota->nominal/$nota->harga);
+        $in = 'Pembelian BBM '.$nota->nama.' '.$nota->sarana.' ('.$nota->no_plat.') / '.number_format($liter, 2).' L @IDR '.number_format($nota->harga).' @KM '.number_format($nota->km);
+        dd($in);
+    }
+
     public function render()
     {
         return view('livewire.administrator.nota.index', [
