@@ -19,7 +19,17 @@
     <div class="pt-3"></div>
     <div class="container">
         <div class="body-container">
-            Driver
+            @foreach($sarana as $row)
+                @if(($row->last_km) - ($row->new_km) <= 200)
+                    <div class="alert custom-alert-3 alert-danger alert-dismissible fade show" role="alert"><i class="bi bi-exclamation-circle"></i>
+                        <div class="alert-text">
+                            <h6>Peringatan! Sarana {{$row->nama.' ('.$row->no_plat.')'}} {{($row->last_km) - ($row->new_km)}} KM lagi mencapai {{number_format($row->last_km)}} KM</h6>
+                            <span>Silakan mengganti oli secepatnya</span>
+                        </div>
+                        <button class="btn btn-close position-relative p-1 ms-auto" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+            @endforeach
         </div>
     </div>
 </div>

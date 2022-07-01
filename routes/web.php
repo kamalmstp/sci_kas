@@ -21,6 +21,11 @@ Route::get('/blank', function () {
     return view('blank');
 });
 
+Route::get('/test', function () {
+    event(new App\Events\Notify('Someone'));
+    return "Event has been sent!";
+});
+
 Route::get('/foo', function () {
     Artisan::call('storage:link');
 });
@@ -46,6 +51,10 @@ Route::middleware(['auth'])->group(function () {
             Route::livewire('/sarana/create', 'administrator.sarana.create')->layout('layouts.simple')->name('sarana.create');
             Route::livewire('/sarana/edit/{id}', 'administrator.sarana.edit')->layout('layouts.simple')->name('sarana.edit');
 
+            Route::livewire('/bahanbakar', 'administrator.bahanbakar.index')->name('bahanbakar.index');
+            Route::livewire('/bahanbakar/create', 'administrator.bahanbakar.create')->layout('layouts.simple')->name('bahanbakar.create');
+            Route::livewire('/bahanbakar/edit/{id}', 'administrator.bahanbakar.edit')->layout('layouts.simple')->name('bahanbakar.edit');
+
             Route::livewire('/kaskeluar', 'administrator.kaskeluar.index')->name('kaskeluar.index');
             Route::livewire('/kaskeluar/create', 'administrator.kaskeluar.create')->layout('layouts.simple')->name('kaskeluar.create');
             Route::livewire('/kaskeluar/edit/{id}', 'administrator.kaskeluar.edit')->layout('layouts.simple')->name('kaskeluar.edit');
@@ -53,6 +62,7 @@ Route::middleware(['auth'])->group(function () {
 
             Route::livewire('/setting', 'administrator.setting.index')->name('setting.index');
             Route::livewire('/nota', 'administrator.nota.index')->name('nota.index');
+            Route::livewire('/nota/show/{id}', 'administrator.nota.show')->layout('layouts.simple')->name('nota.show');
     });
 
     Route::middleware('role:' . User::DRIVER)
@@ -64,6 +74,8 @@ Route::middleware(['auth'])->group(function () {
             Route::livewire('/bbm/create', 'driver.bbm.create')->layout('layouts.simple')->name('bbm.create');
             Route::livewire('/bbm/edit/{id}', 'driver.bbm.edit')->layout('layouts.simple')->name('bbm.edit');
             Route::livewire('/bbm/show/{id}', 'driver.bbm.show')->layout('layouts.simple')->name('bbm.show');
+
+            Route::livewire('/setting', 'driver.setting.index')->name('setting.index');
     });
 });
 

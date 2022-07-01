@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Sarana;
 
 class HomeController extends Controller
 {
@@ -26,7 +27,8 @@ class HomeController extends Controller
         if (auth()->user()->is_admin === 1) {
             return view('administrator.dashboard');
         }else if(auth()->user()->is_admin === 0){
-            return view('driver.dashboard');
+            $sarana = Sarana::all();
+            return view('driver.dashboard', compact('sarana'));
         }
     }
 }

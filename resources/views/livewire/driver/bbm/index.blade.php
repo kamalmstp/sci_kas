@@ -15,7 +15,8 @@
         <div class="card timeline-card">
           <div class="card-body">
             <div class="d-flex justify-content-between">
-              <div class="timeline-text mb-2"><span class="badge mb-2 rounded-pill">{{$row->id_sarana}}</span> - <span class="badge bg-light text-dark">{{'KM '.$row->km}}</span>
+              <div class="timeline-text mb-2">
+                <span class="badge mb-2 rounded-pill">{{$row->nama.'  ('.$row->no_plat.') '}}</span> - <span class="badge bg-light text-dark">{{'KM '.$row->km}}</span>
                 <h6>@currency($row->nominal)</h6>
               </div>
               <div class="timeline-icon mb-2">

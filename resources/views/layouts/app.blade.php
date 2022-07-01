@@ -74,6 +74,9 @@
     <script src="{{asset('js/dark-rtl.js')}}"></script>
     <script src="{{asset('js/active.js')}}" data-turbolinks-track="true" data-turbolinks-eval="false" data-turbolinks-suppress-warning></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11" data-turbolinks-track="true" data-turbolinks-eval="false" data-turbolinks-suppress-warning></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://js.pusher.com/7.1/pusher.min.js"></script>
+    <script src="{{asset('js/push.min.js')}}"></script>
     <!-- PWA -->
     <script src="{{ asset('sw.js') }}"></script>
     <script>
@@ -153,6 +156,30 @@
               }
           });
       }
+    </script>
+    <script type="text/javascript">
+      var notificationsWrapper   = $('.body-container');
+      var notifications          = notificationsWrapper.find('div.notification');
+
+      var pusher = new Pusher('9b4c810e16bd7cc53e64', {
+          cluster: 'ap1',
+          encrypted: true
+      });
+
+      var channel = pusher.subscribe('new-nota');
+      channel.bind('App\\Events\\Notify', function(data){
+        Push.create("Hello world!", {
+            body: "How's it hangin'?",
+            icon: 'img/icons/72.png',
+            onClick: function () {
+                window.focus();
+            }
+        });
+        var existingNotifications = notifications.html();
+        var newHtml = '<div class="alert custom-alert-3 alert-success alert-dismissible fade show" role="alert"><i class="bi bi-check-all"></i><div class="alert-text"><h6>Payment received!</h6><span>'+data.message+'</span><a class="btn btn-sm btn-success mt-2" href="#">Tampilkan</a></div><button class="btn btn-close position-relative p-1 ms-auto" type="button" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+        notifications.html(newHtml + existingNotifications);
+        notificationsWrapper.show();
+      });
     </script>
   </body>
 </html>

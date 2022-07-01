@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Livewire\Administrator\Nota;
+namespace App\Http\Livewire\Administrator\Bahanbakar;
 
 use Livewire\Component;
-use App\Models\Nota;
+use App\Models\Bahanbakar;
 
 class Index extends Component
 {
@@ -18,7 +18,7 @@ class Index extends Component
 
     public function destroy()
     {
-        $kas = Nota::where('id', $this->delete_id)->first();
+        $kas = Bahanbakar::where('id', $this->delete_id)->first();
         $kas->delete();
 
         $this->dispatchBrowserEvent('successDeleted');
@@ -26,8 +26,8 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.administrator.nota.index', [
-            'nota' => Nota::join('sarana', 'nota_bbm.id_sarana', '=', 'sarana.id')->select('sarana.nama', 'sarana.no_plat', 'sarana.last_km', 'nota_bbm.*')->get(),
+        return view('livewire.administrator.bahanbakar.index', [
+            'bbm' => Bahanbakar::all(),
         ]);
     }
 }

@@ -20,6 +20,9 @@
     <div class="container">
         <div class="body-container">
             Administrator
+            <div class="notification">
+                
+            </div>
         </div>
     </div>
 </div>

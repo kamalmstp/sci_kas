@@ -6,7 +6,7 @@
         <div class="sidenav-style1"></div>
         <div class="user-profile"><img src="{{asset('img/bg-img/2.jpg')}}" alt=""></div>
         <div class="user-info">
-            <h6 class="user-name mb-0">Username</h6><span>Jabatan</span>
+            <h6 class="user-name mb-0">{{auth()->user()->name}}</h6><span>{{auth()->user()->level}}</span>
         </div>
         </div>
         <ul class="sidenav-nav ps-0">
@@ -14,7 +14,12 @@
         @if(auth()->user()->level === App\Models\User::ADMIN)
             <!-- <li><a href="{{route('admin.nota.index')}}"><i class="bi bi-receipt-cutoff"></i>Nota</a></li> -->
             <li><a href="{{route('admin.cat.index')}}" data-turbolinks="true"><i class="bi bi-upc"></i>Kode</a></li>
-            <li><a href="{{route('admin.sarana.index')}}"><i class="bi bi-truck"></i>Sarana</a></li>
+            <li><a href="#"><i class="bi bi-journals"></i>Master</a>
+              <ul>
+                <li><a href="{{route('admin.sarana.index')}}">Sarana</a></li>
+                <li><a href="{{route('admin.bahanbakar.index')}}">Bahan Bakar</a></li>
+              </ul>
+            </li>
             <li><a href="{{route('admin.setting.index')}}"><i class="bi bi-gear"></i>Settings</a></li>
         @elseif(auth()->user()->level === App\Models\User::DRIVER)
             <li><a href="{{route('driver.bbm.index')}}"><i class="bi bi-speedometer"></i>Nota BBM</a></li>
