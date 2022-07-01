@@ -32,5 +32,32 @@
             @endforeach
         </div>
     </div>
+
+    <div class="container direction-rtl">
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-4">
+                        <div class="feature-card mx-auto text-center">
+                            <div class="card mx-auto bg-gray"><img src="{{asset('img/home-img/speedometer.png')}}" alt=""></div>
+                            <p class="mb-0">{{($new->km) - ($old->km)}} KM</p>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="feature-card mx-auto text-center">
+                            <div class="card mx-auto bg-gray"><img src="{{asset('img/home-img/rp.png')}}" alt=""></div>
+                            <p class="mb-0">@currency($total_rp)</p>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="feature-card mx-auto text-center">
+                            <div class="card mx-auto bg-gray"><img src="{{asset('img/home-img/speed.png')}}" alt=""></div>
+                            <p class="mb-0">Rp. 5.000</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

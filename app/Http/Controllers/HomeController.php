@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Sarana;
+use App\Models\Nota;
 
 class HomeController extends Controller
 {
@@ -28,7 +29,11 @@ class HomeController extends Controller
             return view('administrator.dashboard');
         }else if(auth()->user()->is_admin === 0){
             $sarana = Sarana::all();
-            return view('driver.dashboard', compact('sarana'));
+            $total_rp = Nota::sum('nominal');
+            $new = Nota::all()->sortByDesc('km')->first();
+            $old = Nota::all()->sortBy('km')->first();
+            // dd($pemakaian_km);
+            return view('driver.dashboard', compact('sarana', 'total_rp', 'new', 'old'));
         }
     }
 }

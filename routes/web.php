@@ -75,6 +75,7 @@ Route::middleware(['auth'])->group(function () {
             Route::livewire('/bbm/edit/{id}', 'driver.bbm.edit')->layout('layouts.simple')->name('bbm.edit');
             Route::livewire('/bbm/show/{id}', 'driver.bbm.show')->layout('layouts.simple')->name('bbm.show');
 
+            Route::livewire('/nota', 'driver.nota.index')->name('nota.index');
             Route::livewire('/setting', 'driver.setting.index')->name('setting.index');
     });
 });

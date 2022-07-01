@@ -1,20 +1,16 @@
 <?php
 
-namespace App\Http\Livewire\Driver\Bbm;
+namespace App\Http\Livewire\Driver\Nota;
 
 use Livewire\Component;
 use App\Models\Nota;
-use App\Models\Sarana;
 
 class Index extends Component
 {
     public function render()
     {
-        $id_user = auth()->user()->id;
-
-        return view('livewire.driver.bbm.index', [
-            'bbm' => Nota::join('sarana', 'nota_bbm.id_sarana', '=', 'sarana.id')
-                    ->where('id_karyawan', $id_user)
+        return view('livewire.driver.nota.index', [
+            'nota' => Nota::join('sarana', 'nota_bbm.id_sarana', '=', 'sarana.id')
                     ->select('sarana.nama', 'sarana.no_plat', 'sarana.last_km', 'nota_bbm.*')
                     ->orderBy('nota_bbm.id', 'desc')->get(),
         ]);
