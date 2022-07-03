@@ -4,20 +4,26 @@ namespace App\Http\Livewire\Administrator\Kaskeluar;
 
 use Livewire\Component;
 use App\Models\Kas_keluar;
+use App\Models\Category;
+use App\Models\Kas;
+use App\Models\Karyawan;
 
 class Edit extends Component
 {
-    public $id_kas, $no_umk, $nominal, $tanggal, $keterangan;
+    public $id_kk, $id_category, $id_karyawan, $tanggal, $pengeluaran, $nominal, $keterangan;
 
     public function mount($id)
     {
-        $kas = Kas::find($id);
+        $this->id_kk = $id;
+        $kas = Kas_keluar::find($id);
+        
 
         if ($kas) {
-            $this->id_kas = $kas->id;
-            $this->no_umk = $kas->no_umk;
-            $this->nominal = $kas->nominal;
+            $this->id_category = $kas->id_category;
+            $this->id_karyawan = $kas->id_karyawan;
             $this->tanggal = $kas->tanggal;
+            $this->pengeluaran = $kas->pengeluaran;
+            $this->nominal = $kas->nominal;
             $this->keterangan = $kas->keterangan;
         }
     }
@@ -25,32 +31,33 @@ class Edit extends Component
     public function update()
     {
         $this->validate([
-            'no_umk' => 'required',
+            'id_category' => 'required',
+            'pengeluaran' => 'required',
             'nominal' => 'required',
             'tanggal' => 'required',
         ]);
 
-        if ($this->id_kas) {
-            $kas = Kas::find($this->id_kas);
+        $kas = KasKas_keluar::find($this->id_kk);
+        $kas->update([
+            'id_category' => $this->id_category,
+            'tanggal' => $this->tanggal,
+            'pengeluaran' => $this->pengeluaran,
+            'nominal' => $this->nominal,
+            'id_karyawan' => $this->id_karyawan,
+            'keterangan' => $this->keterangan
+        ]);
 
-            if ($kas) {
-                $kas->update([
-                    'no_umk' => $this->no_umk,
-                    'nominal' => $this->nominal,
-                    'tanggal' => $this->tanggal,
-                    'keterangan' => $this->keterangan
-                ]);
-            }
-        }
+        session()->flash('message', 'Data Berhasil Diupdate.');
 
-        // $this->dispatchBrowserEvent('success');
-        session()->flash('message', 'Data Berhasil Disimpan.');
-
-        return redirect()->route('admin.kas.index');
+        return redirect()->route('admin.kaskeluar.index');
     }
 
     public function render()
     {
-        return view('livewire.administrator.kas-keluar.edit');
+        return view('livewire.administrator.kas-keluar.edit', [
+            'category' => Category::all(),
+            'kas' => Kas::latest()->first(),
+            'karyawan' => Karyawan::all(),
+        ]);
     }
 }

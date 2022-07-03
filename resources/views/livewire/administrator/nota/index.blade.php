@@ -16,7 +16,10 @@
               </div>
               <div class="timeline-icon mb-2">
                 <div class="row">
+                  @if($row->forward_status == 0)
                     <button wire:click.prevent="forward({{ $row->id }})" class="btn m-1 btn-sm btn-circle btn-creative btn-warning" data-bs-placement="left"><i class="bi bi-save2-fill"></i></button>
+                  @else
+                  @endif
                     <a class="btn m-1 btn-sm btn-circle btn-creative btn-success" href="{{route('admin.nota.show', $row->id)}}" data-bs-placement="left"><i class="bi bi-eye"></i></a>
                     <a href="javascript:void(0)" wire:click.prevent='deleteConfirmation({{$row->id}})' class="btn m-1 btn-sm btn-circle btn-creative btn-danger" data-bs-placement="left"><i class="bi bi-trash-fill"></i></a>
                 </div>

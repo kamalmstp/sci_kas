@@ -17,7 +17,7 @@ class Create extends Component
 
     public function mount()
     {
-        $this->id_user = auth()->user()->id;
+        $this->id_user = auth()->user()->id_karyawan;
     }
 
     public function store()

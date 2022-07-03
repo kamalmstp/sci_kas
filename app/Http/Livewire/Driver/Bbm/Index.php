@@ -10,7 +10,7 @@ class Index extends Component
 {
     public function render()
     {
-        $id_user = auth()->user()->id;
+        $id_user = auth()->user()->id_karyawan;
 
         return view('livewire.driver.bbm.index', [
             'bbm' => Nota::join('sarana', 'nota_bbm.id_sarana', '=', 'sarana.id')
